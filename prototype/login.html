@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login-styles.css">
+</head>
+<body>
+    <a href="index.html" class="logo-link">
+        <img src="logo.png" alt="Website Logo" class="logo">
+    </a>
+    <div class="login-container">
+        <div class="login-content">
+            <div class="toggle-buttons">
+                <button id="farmer-toggle" class="toggle-btn active">Farmer</button>
+                <button id="trader-toggle" class="toggle-btn">Trader</button>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" required>
+                <label for="email" class="input-label">Email</label>
+                <span class="input-icon">&#9993;</span>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" required>
+                <label for="password" class="input-label">Password</label>
+                <span class="input-icon">&#128274;</span>
+            </div>
+            <!-- Forgot Password -->
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
+            <button class="submit-btn">Login</button>
+            <div class="separator"></div>
+            <!-- Sign Up Link -->
+            <div class="sign-up">
+                <span>Don't have an account? <a href="signup.html">Sign up!</a></span>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const farmerToggle = document.getElementById("farmer-toggle");
+        const traderToggle = document.getElementById("trader-toggle");
+    
+        farmerToggle.addEventListener("click", function() {
+            farmerToggle.classList.add("active");
+            traderToggle.classList.remove("active");
+        });
+    
+        traderToggle.addEventListener("click", function() {
+            traderToggle.classList.add("active");
+            farmerToggle.classList.remove("active");
+        });
+    });
+    
+</script>    
+</body>
+</html>

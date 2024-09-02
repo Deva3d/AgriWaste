@@ -1,0 +1,232 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+/* Logo Styles */
+.logo-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2; /* Ensure it's above other content */
+}
+
+.logo {
+    width: 75px; /* Adjust size according to your design */
+    height: auto;
+    display: block;
+}
+
+.logo:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* Background styles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('background2.jpeg'); /* Your background image */
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    z-index: -1; /* Keeps the background behind other content */
+}
+
+/* Signup container */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Clear the blur effect for the signup content */
+.signup-content {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    backdrop-filter: none; /* Ensure no blur effect is applied here */
+    max-width: 400px; /* Set a maximum width for better layout */
+    width: 100%; /* Full width but constrained by max-width */
+    overflow-y: scroll; /* Make inner content scrollable if needed */
+    height: auto; /* Allow height to adjust based on content */
+    max-height: 80vh; /* Ensure it doesn't exceed 80% of viewport height */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none;  /* Hide scrollbar for Internet Explorer and Edge */
+}
+
+.signup-content::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+/* Toggle buttons */
+.toggle-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #228b22; /* Green border */
+    background: #f7f7f7;
+    border: 2px solid #228b22;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.toggle-btn.active {
+    background: #228b22;
+    color: white;
+    border-color: #228b22;
+}
+
+.toggle-btn:hover {
+    background: #228b22;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Form group */
+.form-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 100%;
+    padding: 15px 40px 15px 10px;
+    font-size: 1.1rem;
+    border: 2px solid rgba(255, 255, 255, 0.6); /* Dark white border */
+    border-radius: 5px;
+    outline: none;
+    background-color: transparent; /* Initial background color */
+    color: #fff; /* Text color */
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #fff; /* Solid white border */
+    background-color: #fff; /* White background color */
+    color: #333; /* Change text color to dark for better readability */
+}
+
+.input-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6); /* Label color */
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+input:focus + .input-label,
+input:not(:placeholder-shown) + .input-label {
+    top: -15px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: #000000;
+}
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #999;
+}
+
+/* Submit button */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #228b22; /* Green border */
+    background: transparent;
+    border: 2px solid #228b22;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.submit-btn:hover {
+    background: #228b22;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Separator Line */
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0; /* Light grey */
+    margin: 20px 0;
+}
+
+/* Sign Up Link Styles */
+.sign-up {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.sign-up span {
+    color: #555; /* Medium grey */
+}
+
+.sign-up a {
+    color: #32cd32; /* Vibrant green */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.sign-up a:hover {
+    color: #228b22; /* Darker green */
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .signup-content {
+        padding: 30px;
+    }
+
+    .toggle-btn {
+        font-size: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .submit-btn {
+        font-size: 1rem;
+    }
+
+    .sign-up {
+        font-size: 0.8rem;
+    }
+}
