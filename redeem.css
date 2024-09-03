@@ -8,7 +8,10 @@
 body, html {
   height: 100%;
   font-family: 'Roboto', sans-serif;
-  overflow: hidden;
+  overflow-y: auto;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  scrollbar-width: none;
 }
 
 /* Background Image */
@@ -31,7 +34,69 @@ body, html {
   min-height: 100%;
   width: auto;
   height: auto;
-  filter: blur(8px) ;
+  filter: blur(15px) brightness(0.7);
+}
+
+/* Navbar Styles (Copied from index.html) */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: rgba(20, 20, 20, 0.8);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  border-radius: 15px;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+}
+
+nav .logo img {
+  width: 50px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+nav .logo img:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+nav .menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+}
+
+nav .menu li {
+  display: flex;
+  align-items: center;
+}
+
+nav .menu li a.menu-btn {
+  color: #32cd32;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 2px solid #32cd32;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+nav .menu li a.menu-btn:hover {
+  background-color: #32cd32;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(50, 205, 50, 0.4);
 }
 
 /* Redeem Content */
@@ -41,22 +106,22 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
   text-align: center;
-  color: white;
+  margin-top: 100px;
 }
 
 .redeem-content h1 {
-  font-size: 3rem;
-  margin-bottom: 40px;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 /* Redeem Boxes */
 .redeem-boxes {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 
@@ -67,30 +132,65 @@ body, html {
 }
 
 .redeem-box-title {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #51a003;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #66ff66;
   position: relative;
-  z-index: 2; /* Ensure the title is above the box */
+  z-index: 2;
 }
 
 .redeem-box {
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 20px;
-  padding: 40px;
-  width: 350px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(20, 20, 20, 0.8);
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   text-align: center;
-  opacity: 0; /* Start hidden */
-  transform: translateY(30px); /* Start below the normal position */
-  animation: popUp 0.6s forwards; /* Apply animation */
+  opacity: 0;
+  transform: translateY(40px);
+  animation: popUp 0.5s forwards;
+}
+
+.redeem-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.redeem-box p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #d9d9d9;
+}
+
+.redeem-button {
+  background-color: transparent;
+  color: #66ff66;
+  border: 2px solid #66ff66;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.redeem-button:hover {
+  background-color: #66ff66;
+  color: #0a0a0a;
+}
+
+.redeem-button:active {
+  background-color: #409640;
+  color: white;
+  transform: scale(0.95);
 }
 
 /* Animation Keyframes */
 @keyframes popUp {
   from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(40px);
   }
   to {
       opacity: 1;
@@ -98,36 +198,10 @@ body, html {
   }
 }
 
-.redeem-box p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #f4f4f4;
-}
-
-.redeem-button {
-  background-color: #51a003;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.redeem-button:hover {
-  background-color: #3e8e41;
-}
-
-.redeem-button:active {
-  background-color: #2c6e3c;
-  transform: scale(0.95);
-}
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .redeem-content h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
   }
 
   .redeem-boxes {
@@ -135,6 +209,6 @@ body, html {
   }
 
   .redeem-box {
-      width: 90%;
+      width: 85%;
   }
 }
