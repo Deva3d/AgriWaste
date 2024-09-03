@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture Waste Management Flow</title>
+    <link rel="stylesheet" href="help.css">
+</head>
+<body>
+    
+    <nav>
+        <a href="index.html" class="logo-link">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+              </div>
+        </a>
+      <ul class="menu">
+        <li><a href="index.html" class="menu-btn">Home</a></li>
+        <li><a href="redeem.html" class="menu-btn">Redeem</a></li>
+      </ul>
+    </nav>
+
+    <div class="game-map">
+        <div class="path"></div>
+
+        <div class="step" id="step1">
+            <div class="icon">
+                <img src="icon1.png" alt="Step 1">
+            </div>
+            <div class="description">
+                <h2>Enlist Agriculture Wastes by Clicking Photo</h2>
+                <p>Use your phone to capture an image of the agriculture waste you wish to recycle.</p>
+            </div>
+        </div>
+
+        <div class="connector" id="connector1"></div>
+
+        <div class="step" id="step2">
+            <div class="icon">
+                <img src="icon2.png" alt="Step 2">
+            </div>
+            <div class="description">
+                <h2>Seggregatoin of waste by AI and ML algorithm</h2>
+                <p>Our system analyzes the waste using advanced AI algorithms to seggregate it.</p>
+            </div>
+        </div>
+
+        <div class="connector" id="connector2"></div>
+
+        <div class="step" id="step3">
+            <div class="icon">
+                <img src="icon3.jpeg" alt="Step 3">
+            </div>
+            <div class="description">
+                <h2>Farmer to Farmer Connect</h2>
+                <p>Connect with other farmers to collectively manage and sell your waste.</p>
+            </div>
+        </div>
+
+        <div class="connector" id="connector3"></div>
+
+        <div class="step" id="step4">
+            <div class="icon">
+                <img src="icon4.webp" alt="Step 4">
+            </div>
+            <div class="description">
+                <h2>Trader Management</h2>
+                <p>Connects with nearby trader for waste trade.</p>
+            </div>
+        </div>
+
+        <div class="connector" id="connector4"></div>
+
+        <div class="step" id="step5">
+            <div class="icon">
+                <img src="icon5.png" alt="Step 5">
+            </div>
+            <div class="description">
+                <h2>Redeem Points for Discounts</h2>
+                <p>Earn points based on the type of the waste, which you can redeem for discounts on other website.</p>
+            </div>
+        </div>
+
+        <div class="connector" id="connector5"></div>
+
+        
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const steps = document.querySelectorAll('.step');
+            const connectors = document.querySelectorAll('.connector');
+            let stepIndex = 0;
+          
+            function positionSteps() {
+              steps.forEach((step, index) => {
+                step.style.top = `${10 + index * 30}vh`; // Increase spacing between steps
+              });
+            }
+          
+            function scrollToStep(index) {
+              const step = steps[index];
+              if (step) {
+                const rect = step.getBoundingClientRect();
+                const offsetTop = window.scrollY + rect.top - window.innerHeight / 2 + rect.height / 2;
+          
+                window.scrollTo({
+                  top: offsetTop,
+                  behavior: 'smooth'
+                });
+              }
+            }
+          
+            function showStep() {
+              if (stepIndex < steps.length) {
+                const step = steps[stepIndex];
+                step.style.opacity = 1;
+                step.style.transform = 'scale(1)';
+                step.classList.add(stepIndex % 2 === 0 ? 'zigzag-animation' : 'zigzag-animation-reverse');
+                
+                setTimeout(() => {
+                  step.classList.remove('zigzag-animation', 'zigzag-animation-reverse');
+                  showConnector();
+                }, 1000); // Adjust timing if needed
+              }
+            }
+          
+            function showConnector() {
+              if (stepIndex < connectors.length) {
+                const connector = connectors[stepIndex];
+                connector.style.opacity = 1;
+                connector.style.transform = 'scale(1)';
+                setTimeout(() => {
+                  scrollToStep(stepIndex);
+                  stepIndex++;
+                  showStep();
+                }, 500); // Adjust timing if needed
+              }
+            }
+          
+            // Position steps before starting the animation
+            positionSteps();
+          
+            // Start the animation sequence
+            showStep();
+          });
+          
+    </script>
+</body>
+</html>
